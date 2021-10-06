@@ -3,7 +3,7 @@ package no.hvl.dat100.prosjekt;
 public class TODO {
 
 	public static String method() {
-		//hei
+		//hei hva skjer
 		String methodName = Thread.currentThread().getStackTrace()[2].getMethodName();
 		
 		return "Metoden " + methodName + " er ikke implementert";

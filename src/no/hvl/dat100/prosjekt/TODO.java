@@ -4,6 +4,7 @@ public class TODO {
 
 	public static String method() {
 		//hei hva skjer
+		//Hei igjen
 		String methodName = Thread.currentThread().getStackTrace()[2].getMethodName();
 		
 		return "Metoden " + methodName + " er ikke implementert";

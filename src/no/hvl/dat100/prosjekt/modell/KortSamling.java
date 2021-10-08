@@ -51,7 +51,7 @@ public class KortSamling {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		return samling.length;
 		
 		// TODO - END
 	}

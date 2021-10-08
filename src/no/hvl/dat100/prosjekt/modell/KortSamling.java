@@ -64,8 +64,11 @@ public class KortSamling {
 	public boolean erTom() {
 		
 		// TODO - START
-				
-		throw new UnsupportedOperationException(TODO.method());
+		boolean erTom = false;
+		if (samling.length > 0)
+			erTom = true;
+		
+		return erTom;
 		
 		// TODO - END
 	}
@@ -79,8 +82,8 @@ public class KortSamling {
 	public void leggTil(Kort kort) {
 		
 		// TODO - START
+		samling[0] = kort;
 		
-		throw new UnsupportedOperationException(TODO.method());
 		// TODO - END
 		
 	}

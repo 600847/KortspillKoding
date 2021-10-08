@@ -82,8 +82,9 @@ public class KortSamling {
 	public void leggTil(Kort kort) {
 		
 		// TODO - START
-		samling[0] = kort;
-		
+		samling[this.antall] = kort;
+		antall += 1;
+	
 		// TODO - END
 		
 	}

@@ -51,7 +51,7 @@ public class KortSamling {
 		
 		// TODO - START
 		
-		return samling.length;
+		return antall;
 		
 		// TODO - END
 	}
@@ -64,9 +64,9 @@ public class KortSamling {
 	public boolean erTom() {
 		
 		// TODO - START
-		boolean erTom = false;
-		if (samling.length > 0)
-			erTom = true;
+		boolean erTom = true;
+		if (antall > 0)
+			erTom = false;
 		
 		return erTom;
 		
@@ -82,8 +82,8 @@ public class KortSamling {
 	public void leggTil(Kort kort) {
 		
 		// TODO - START
-		samling[this.antall] = kort;
-		antall += 1;
+		samling[antall] = kort;
+		this.antall++;
 	
 		// TODO - END
 		
@@ -96,6 +96,7 @@ public class KortSamling {
 	public void leggTilAlle() {
 		
 		// TODO - START
+
 		// Husk: bruk Regler.MAKS_KORT_FARGE for å få antall kort per farge
 		
 		throw new UnsupportedOperationException(TODO.method());

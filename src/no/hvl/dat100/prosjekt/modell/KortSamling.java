@@ -17,15 +17,14 @@ public class KortSamling {
 	private Kort[] samling;
 	private int antall;
 
+	
+
 	/**
 	 * Oppretter en tom Kortsamling med plass til MAKS_KORT (hele kortstokken).
 	 */
 	public KortSamling() {
-		
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.constructor("KortSamling"));
-		// TODO - END
+		samling = new Kort[MAKS_KORT];
+
 	}
 
 	/**

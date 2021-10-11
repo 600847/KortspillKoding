@@ -1,6 +1,7 @@
 package no.hvl.dat100.prosjekt.modell;
 
 import no.hvl.dat100.prosjekt.TODO;
+import java.util.Arrays;	
 import no.hvl.dat100.prosjekt.kontroll.dommer.Regler;
 
 /**
@@ -112,13 +113,10 @@ public class KortSamling {
 	public void fjernAlle() {
 		
 		// TODO - START
-		samling= null;
-		
-		   
-		}
-		
+		samling = new Kort[MAKS_KORT];
+		antall = 0;
+	}
 		// TODO - END
-	
 	
 	/**
 	 * Ser pÃ¥ siste kortet i samlinga.
@@ -167,15 +165,21 @@ public class KortSamling {
 	 */
 	public boolean har(Kort kort) {
 		
-		// TODO - START
-		for(int Kort= 0; Kort<Regler.MAKS_KORT_FARGE; Kort++) {
-			if(kort.equals(kort));
-			return true;
-		}
-		 return false;
-		// TODO - END
-		
-	}
+		   if (kort == null){
+	            return false;
+	        }
+	        
+	        for (int i = 0; i < samling.length; i++){
+	            if (samling[i] == null){
+	                continue;
+	            }
+	            else if (kort.equals(samling[i])){
+	                return true;
+	            }
+	        }
+	        return false;
+	    }
+	
 
 	/**
 	 * Fjernar et kort frÃ¥ samlinga. Dersom kortet ikke finnest i samlinga,
@@ -191,13 +195,16 @@ public class KortSamling {
 		
 		// TODO - START
 		for(int i = 0; i<samling.length; i++) {
-			if(samling[i].equals(kort)) {
-				antall--;
-				return true;
-				
-			}
-		}
-		return false;
+            if (samling[i] == null){
+                continue;
+            }
+            else if(samling[i].equals(kort)) {
+                samling[i] = null;
+                antall--;
+                return true;
+            }
+        }
+        return false;
 		
  
 		// TODO - END

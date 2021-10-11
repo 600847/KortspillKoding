@@ -4,10 +4,10 @@ import no.hvl.dat100.prosjekt.TODO;
 import no.hvl.dat100.prosjekt.kontroll.dommer.Regler;
 
 /**
- * Struktur for å lagre ei samling kort. Kan lagre hele kortstokken. Det finnes
- * en konstant i klassen Regler som angir antall kort i hver av de 4 fargene. Når
+ * Struktur for Ã¥ lagre ei samling kort. Kan lagre hele kortstokken. Det finnes
+ * en konstant i klassen Regler som angir antall kort i hver av de 4 fargene. NÃ¥r
  * programmet er ferdig settes denne til 13, men under utvikling / testing kan
- * det være praktisk å ha denne mindre.
+ * det vÃ¦re praktisk Ã¥ ha denne mindre.
  * 
  */
 public class KortSamling {
@@ -24,14 +24,15 @@ public class KortSamling {
 	 */
 	public KortSamling() {
 		samling = new Kort[MAKS_KORT];
+		antall=0;
 
 	}
 
 	/**
-	 * Returnerer en tabell med kortene i samlinga. Tabellen trenger ikke være
-	 * full. Kortene ligger sammenhengende fra starten av tabellen. Kan få
-	 * tilgang til antallet ved å bruke metoden getAntallKort(). Metoden er
-	 * først og fremst ment å brukes i testklasser. Om man trenger
+	 * Returnerer en tabell med kortene i samlinga. Tabellen trenger ikke vÃ¦re
+	 * full. Kortene ligger sammenhengende fra starten av tabellen. Kan fÃ¥
+	 * tilgang til antallet ved Ã¥ bruke metoden getAntallKort(). Metoden er
+	 * fÃ¸rst og fremst ment Ã¥ brukes i testklasser. Om man trenger
 	 * kortene utenfor, anbefales metoden getAlleKort().
 	 * 
 	 * @return tabell av kort.
@@ -82,25 +83,27 @@ public class KortSamling {
 	public void leggTil(Kort kort) {
 		
 		// TODO - START
-		samling[antall] = kort;
-		this.antall++;
-	
+		samling[antall]= kort;
+		antall++;
 		// TODO - END
 		
 	}
 	
 	/**
-	 * Legger alle korta (hele kortstokken) til samlinga. Korta vil være sortert
-	 * slik at de normalt må stokkes før bruk.
+	 * Legger alle korta (hele kortstokken) til samlinga. Korta vil vÃ¦re sortert
+	 * slik at de normalt mÃ¥ stokkes fÃ¸r bruk.
 	 */
 	public void leggTilAlle() {
 		
 		// TODO - START
-
-		// Husk: bruk Regler.MAKS_KORT_FARGE for å få antall kort per farge
-		
-		throw new UnsupportedOperationException(TODO.method());
-		// TODO - END
+		// Husk: bruk Regler.MAKS_KORT_FARGE for Ã¥ fÃ¥ antall kort per farge
+		for(Kortfarge farge: Kortfarge.values()) {
+			for(int i=0; i<Regler.MAKS_KORT_FARGE; i++) {
+				Kort kort =new Kort(farge, i+1);
+				leggTil(kort);
+			}
+		}
+		 //TODO - END
 	}
 
 	/**
@@ -109,13 +112,16 @@ public class KortSamling {
 	public void fjernAlle() {
 		
 		// TODO - START
+		samling= null;
 		
-		throw new UnsupportedOperationException(TODO.method());
+		   
+		}
+		
 		// TODO - END
-	}
+	
 	
 	/**
-	 * Ser på siste kortet i samlinga.
+	 * Ser pÃ¥ siste kortet i samlinga.
 	 * 
 	 * @return siste kortet i samlinga, men det blir ikke fjernet. Dersom samalinga er tom, returneres
 	 *         null.
@@ -123,9 +129,11 @@ public class KortSamling {
 	public Kort seSiste() {
 		
 		// TODO - START
+		if(antall<=0)
+			return null;
+		return samling[antall-1];
+	
 		
-		throw new UnsupportedOperationException(TODO.method());
-
 		// TODO - END
 		
 	}
@@ -139,14 +147,19 @@ public class KortSamling {
 	public Kort taSiste() {
 		
 		// TODO - START
+		if (antall<=0)
+			return null;
+		Kort siste = samling[antall-1];
+		samling[antall-1]=null;
+		antall--;
+		return siste;
 		
-		throw new UnsupportedOperationException(TODO.method());
 		
 		// TODO - END
 	}
 	
 	/**
-	 * Undersøker om et kort finst i samlinga.
+	 * UndersÃ¸ker om et kort finst i samlinga.
 	 * 
 	 * @param kort.
 	 * 
@@ -155,15 +168,17 @@ public class KortSamling {
 	public boolean har(Kort kort) {
 		
 		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
-		// return false;
+		for(int Kort= 0; Kort<Regler.MAKS_KORT_FARGE; Kort++) {
+			if(kort.equals(kort));
+			return true;
+		}
+		 return false;
 		// TODO - END
 		
 	}
 
 	/**
-	 * Fjernar et kort frå samlinga. Dersom kortet ikke finnest i samlinga,
+	 * Fjernar et kort frÃ¥ samlinga. Dersom kortet ikke finnest i samlinga,
 	 * skjer ingenting med samilingen
 	 * 
 	 * @param kort
@@ -175,23 +190,38 @@ public class KortSamling {
 	public boolean fjern(Kort kort) {
 		
 		// TODO - START
+		for(int i = 0; i<samling.length; i++) {
+			if(samling[i].equals(kort)) {
+				antall--;
+				return true;
+				
+			}
+		}
+		return false;
 		
-		throw new UnsupportedOperationException(TODO.method());
-
+ 
 		// TODO - END
 	}
 
 	/**
 	 * Gir kortene som en tabell av samme lengde som antall kort i samlingen
 	 * 
-	 * @return tabell av kort som er i samlingen, der kort skal ha samme rekkefølge
+	 * @return tabell av kort som er i samlingen, der kort skal ha samme rekkefÃ¸lge
 	 *         som i kortsamlinga.
 	 */
 	public Kort[] getAllekort() {
 		
 		// TODO - START
+		Kort[] copy = new Kort[antall];
+		int teller= 0;
+		for(int i=0; i<samling.length; i++) {
+			if(samling[i] instanceof Kort) {
+				copy[teller]=samling[i];
+				teller++;
+			}
+		}
+		return copy;
 		
-		throw new UnsupportedOperationException(TODO.method());
 
 		// TODO - END
 	

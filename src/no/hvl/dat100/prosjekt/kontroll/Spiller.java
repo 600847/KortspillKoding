@@ -52,7 +52,7 @@ public abstract class Spiller implements ISpiller {
 	public Spiller(Spillere spiller) {
 		
 		// TODO - START
-		spiller = spiller.INGEN;
+		this.spiller = spiller;
 		// TODO - END
 	}
 

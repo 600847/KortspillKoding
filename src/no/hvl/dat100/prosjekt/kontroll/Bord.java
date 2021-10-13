@@ -23,8 +23,13 @@ public class Bord {
 	public Bord() {
 		
 		// TODO - START
+		bunkeFra = new KortSamling();
+		bunkeTil = new KortSamling();
 		
-		throw new UnsupportedOperationException(TODO.constructor("Bord"));
+		bunkeFra.leggTilAlle();
+	
+	
+		
 		// TODO - END
 	}
 	
@@ -58,9 +63,8 @@ public class Bord {
 	public boolean bunketilTom() {
 		
 		// TODO - START
-				
-		throw new UnsupportedOperationException(TODO.method());
-
+		
+		return bunkeTil.erTom();
 		// TODO - END
 	}
 
@@ -73,7 +77,7 @@ public class Bord {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		return bunkeFra.erTom();
 	
 		// TODO - END
 		
@@ -88,7 +92,7 @@ public class Bord {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+	return bunkeFra.getAntalKort();
 
 		// TODO - END
 	}
@@ -102,8 +106,8 @@ public class Bord {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
-
+		
+		return bunkeTil.getAntalKort();
 		// TODO - END
 	}
 	
@@ -114,8 +118,9 @@ public class Bord {
 	public void vendOversteFraBunke() {
 		
 		// TODO - START
+		bunkeTil.leggTil(bunkeFra.taSiste());
 		
-		throw new UnsupportedOperationException(TODO.method());
+		
 		// TODO - END
 		
 	}
@@ -130,7 +135,8 @@ public class Bord {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		
+		return bunkeFra.taSiste();
 
 		// TODO - END
 	}
@@ -145,22 +151,32 @@ public class Bord {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		return bunkeTil.seSiste();
 
 		// TODO - END
 	}
 	
 	/**
 	 * Når fra-bunken blir tom, tar man vare på kortet pÂ toppen av til-bunken.
-	 * Deretter legges alle den andre kortene i til-bunken over i fra-bunken.
+	 * Deretter legges alle de andre kortene i til-bunken over i fra-bunken.
 	 * Denne stokkes og kortet som man har tatt vare pÂ legges tilbake i
 	 * til-bunken. Det vil nå være det eneste kortet i til-bunken.
 	 */
 	public void snuTilBunken() {
 
 		// TODO - START
+		if (bunkeFra.erTom() == true) { //sjekker om bunken er tom
+			Kort k1 = bunkeTil.taSiste();			//tar siste kortet fra bunken til
+			
+			bunkeFra.leggTilAlle();		//legger til alle kortene 
+			
+			KortUtils.stokk(bunkeFra); //stokker kortstokken
+			
+			bunkeTil.leggTil(k1);
+			
+		}
 		
-		throw new UnsupportedOperationException(TODO.method());
+		
 		// TODO - END
 	}
 		
@@ -174,8 +190,7 @@ public class Bord {
 	public void leggNedBunkeTil(Kort k) {
 		
 		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
+		bunkeTil.leggTil(k);
 		// TODO - END
 				
 	}

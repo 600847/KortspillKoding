@@ -35,7 +35,6 @@ public abstract class Spiller implements ISpiller {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.constructor("Spiller"));
 		// TODO - END
 	}
 
